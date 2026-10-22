@@ -1,0 +1,280 @@
+<style>
+  /* Modal Overlay Background */
+  .custom-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Modal Content Box */
+  .custom-popup-box {
+    background: #ffffff;
+    padding: 24px;
+    width: 90%;
+    max-width: 520px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: left;
+    color: #333333;
+  }
+
+  /* Close Button */
+  .custom-popup-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888888;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  .custom-popup-close:hover {
+    color: #000000;
+  }
+
+  /* Heading & Content Styling */
+  .custom-popup-box h3 {
+    margin-top: 0;
+    color: #1a73e8;
+    font-size: 20px;
+    padding-right: 25px;
+    line-height: 1.4;
+  }
+
+  .intro-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #444444;
+    margin-bottom: 16px;
+  }
+
+  .task-list {
+    background-color: #f8f9fa;
+    border-left: 4px solid #1a73e8;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 20px;
+  }
+
+  .task-item {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #202124;
+  }
+
+  .task-item strong {
+    color: #1a73e8;
+  }
+
+  /* Checkbox Container */
+  .completion-container {
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f4;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  /* Checkbox Styling */
+  .completion-container input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #1a73e8;
+    cursor: pointer;
+    margin-right: 12px;
+  }
+
+  .completion-label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #3c4043;
+    cursor: pointer;
+  }
+
+  .status-badge {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #d93025;
+  }
+
+  .status-badge.completed {
+    color: #188038;
+  }
+
+  /* Trigger Button Styling */
+  .open-popup-btn {
+    background-color: #1a73e8;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+  }
+
+  .open-popup-btn:hover {
+    background-color: #1557b0;
+  }
+
+  /* Action Button */
+  .custom-popup-btn {
+    display: block;
+    background-color: #1a73e8;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .custom-popup-btn:hover {
+    background-color: #1557b0;
+  }
+</style>
+
+<!-- 1. Trigger Button -->
+<button class="open-popup-btn" onclick="openPopup()">Day 59: View Tasks ✨</button>
+
+<!-- 2. Modal Overlay -->
+<div id="sitePopup" class="custom-popup-overlay">
+  <div class="custom-popup-box">
+    <button class="custom-popup-close" onclick="closePopup()">&times;</button>
+    
+    <h3>Day 59: The Final Review (Confidence Building) ✨</h3>
+    
+    <p class="intro-text">
+      আজ কোনো মক টেস্ট বা কঠিন পড়া নেই। যা পড়েছেন, শুধু তার ওপর চোখ বুলিয়ে কনফিডেন্স বাড়ানোর দিন।
+    </p>
+
+    <div class="task-list">
+      <div class="task-item"><strong>Task 1: Note Review:</strong> আপনার তৈরি করা গ্রামার রুলস, রিডিং স্ট্র্যাটেজি এবং লিসেনিং টিপসগুলোর খাতাটি একবার প্রথম থেকে শেষ পর্যন্ত পড়ুন।</div>
+      <div class="task-item"><strong>Task 2: Skim Reading:</strong> কোনো প্রশ্ন সলভ না করে শুধু ২-৩টি রিডিং প্যাসেজ রিল্যাক্স মুডে রিডিং পড়ুন।</div>
+      <div class="task-item"><strong>Task 3: Essay Reading:</strong> নিজে কোনো এসে না লিখে, ব্যান্ড ৯ এর ৩টি এসে (Task 1 ও Task 2) শুধু রিডিং পড়ুন।</div>
+      <div class="task-item"><strong>Task 4: Talk to Yourself:</strong> আয়নার সামনে দাঁড়িয়ে নিজের শখ, লক্ষ্য বা ফেভারিট টপিক নিয়ে হাসিমুখে ৫ মিনিট কথা বলুন।</div>
+      <div class="task-item"><strong>Task 5: Stop Studying Early:</strong> আজ সন্ধ্যার পর আর কোনো বই ধরবেন না। ব্রেইনকে কুলডাউন হতে দিন।</div>
+    </div>
+
+    <!-- Complete / Incomplete Checkbox Box -->
+    <label class="completion-container" for="day59Complete">
+      <input type="checkbox" id="day59Complete" onchange="toggleCompletionState()">
+      <div>
+        <span class="completion-label">Mark as Complete ✔</span>
+        <div id="statusBadge" class="status-badge">Status: Incomplete ✖</div>
+      </div>
+    </label>
+
+    <button class="custom-popup-btn" onclick="closePopup()">Save & Close</button>
+  </div>
+</div>
+
+<!-- 3. IndexedDB Persistent Storage Logic -->
+<script>
+  const DB_NAME = 'GSiteTasksDB';
+  const STORE_NAME = 'task_status';
+  const TASK_KEY = 'day_59_status';
+  let db = null;
+
+  // Initialize IndexedDB
+  function initDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(DB_NAME, 1);
+      request.onupgradeneeded = (e) => {
+        const database = e.target.result;
+        if (!database.objectStoreNames.contains(STORE_NAME)) {
+          database.createObjectStore(STORE_NAME);
+        }
+      };
+      request.onsuccess = (e) => {
+        db = e.target.result;
+        resolve(db);
+      };
+      request.onerror = (e) => resolve(null);
+    });
+  }
+
+  // Save state to IndexedDB
+  async function saveToDB(value) {
+    if (!db) await initDB();
+    if (!db) return;
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    const store = tx.objectStore(STORE_NAME);
+    store.put(value, TASK_KEY);
+  }
+
+  // Read state from IndexedDB
+  async function readFromDB() {
+    if (!db) await initDB();
+    if (!db) return false;
+    return new Promise((resolve) => {
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      const req = store.get(TASK_KEY);
+      req.onsuccess = () => resolve(req.result === true);
+      req.onerror = () => resolve(false);
+    });
+  }
+
+  async function openPopup() {
+    document.getElementById('sitePopup').style.display = 'flex';
+    await loadCompletionState();
+  }
+
+  function closePopup() {
+    document.getElementById('sitePopup').style.display = 'none';
+  }
+
+  async function toggleCompletionState() {
+    const checkbox = document.getElementById('day59Complete');
+    const isChecked = checkbox.checked;
+    await saveToDB(isChecked);
+    updateBadgeUI(isChecked);
+  }
+
+  async function loadCompletionState() {
+    const isCompleted = await readFromDB();
+    const checkbox = document.getElementById('day59Complete');
+    checkbox.checked = isCompleted;
+    updateBadgeUI(isCompleted);
+  }
+
+  function updateBadgeUI(isCompleted) {
+    const badge = document.getElementById('statusBadge');
+    if (isCompleted) {
+      badge.textContent = 'Status: Completed ✔';
+      badge.classList.add('completed');
+    } else {
+      badge.textContent = 'Status: Incomplete ✖';
+      badge.classList.remove('completed');
+    }
+  }
+
+  // Pre-load saved state when script runs
+  initDB().then(() => loadCompletionState());
+</script>
