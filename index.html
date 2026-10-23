@@ -226,7 +226,7 @@
   <!-- 3. JavaScript Logic for LocalStorage -->
   <script>
     // Unique key for Day 1
-    const STORAGE_KEY = 'day_1_foundation_complete';
+    const STORAGE_KEY = 'ielts_day_1_complete';
 
     function openPopup() {
       document.getElementById('sitePopup').style.display = 'flex';
@@ -259,4 +259,13 @@
         badge.textContent = 'Status: Completed ✔';
         badge.classList.add('completed');
       } else {
-        badge.textContent = 'Status: Incomplete
+        badge.textContent = 'Status: Incomplete ✖';
+        badge.classList.remove('completed');
+      }
+    }
+
+    // Auto-check on page load
+    window.addEventListener('DOMContentLoaded', loadCompletionState);
+  </script>
+</body>
+</html>
