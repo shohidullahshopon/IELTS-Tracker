@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 7: Weekly Review & Rest</title>
+  <style>
+    /* Global Reset & Box Sizing */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: transparent;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Modal Overlay Background */
+    .custom-popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Modal Content Box */
+    .custom-popup-box {
+      background: #ffffff;
+      padding: 24px;
+      width: 90%;
+      max-width: 520px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      text-align: left;
+      color: #333333;
+    }
+
+    /* Close Button */
+    .custom-popup-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #888888;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .custom-popup-close:hover {
+      color: #000000;
+    }
+
+    /* Heading & Content Styling */
+    .custom-popup-box h3 {
+      margin-top: 0;
+      color: #1a73e8;
+      font-size: 20px;
+      padding-right: 25px;
+      line-height: 1.4;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #444444;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+
+    .task-list {
+      background-color: #f8f9fa;
+      border-left: 4px solid #1a73e8;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+    }
+
+    .task-item {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      color: #202124;
+    }
+
+    .task-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .task-item strong {
+      color: #1a73e8;
+    }
+
+    /* Checkbox Container */
+    .completion-container {
+      display: flex;
+      align-items: center;
+      background-color: #f1f3f4;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #dadce0;
+      margin-bottom: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Checkbox Styling */
+    .completion-container input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: #1a73e8;
+      cursor: pointer;
+      margin-right: 12px;
+    }
+
+    .completion-label {
+      font-size: 15px;
+      font-weight: bold;
+      color: #3c4043;
+      cursor: pointer;
+    }
+
+    .status-badge {
+      margin-top: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #d93025; /* Red for incomplete */
+    }
+
+    .status-badge.completed {
+      color: #188038; /* Green for completed */
+    }
+
+    /* Trigger Button Styling */
+    .open-popup-btn {
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
+    .open-popup-btn:hover {
+      background-color: #1557b0;
+    }
+
+    /* Action Button */
+    .custom-popup-btn {
+      display: block;
+      background-color: #1a73e8;
+      color: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .custom-popup-btn:hover {
+      background-color: #1557b0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Trigger Button -->
+  <button class="open-popup-btn" onclick="openPopup()">Day 7: View Tasks ☕</button>
+
+  <!-- 2. Modal Overlay -->
+  <div id="sitePopup" class="custom-popup-overlay">
+    <div class="custom-popup-box">
+      <button class="custom-popup-close" onclick="closePopup()">&times;</button>
+      
+      <h3>Day 7: Weekly Review & Rest ☕</h3>
+      
+      <p class="intro-text">
+        সপ্তাহের শেষ দিন। আজ নতুন কিছু শেখার চেয়ে পুরনো পড়া রিভিশন দেওয়া বেশি জরুরি।
+      </p>
+
+      <div class="task-list">
+        <div class="task-item"><strong>Task 1:</strong> এই সপ্তাহে শেখা সবগুলো নতুন শব্দ (Vocabulary) এবং গ্রামার রুলস খাতা থেকে রিভিশন দিন।</div>
+        <div class="task-item"><strong>Task 2:</strong> ইংরেজি সাবটাইটেল দিয়ে আপনার পছন্দের যেকোনো একটি মুভি, ডকুমেন্টারি বা ইউটিউব ভিডিও উপভোগ করুন।</div>
+        <div class="task-item"><strong>Task 3:</strong> একটি ডায়েরি নিয়ে আগামী সপ্তাহের জন্য নিজের স্টাডি রুটিন এবং লক্ষ্যগুলো লিখে ফেলুন।</div>
+        <div class="task-item"><strong>Task 4:</strong> ব্রেইনকে রেস্ট দিন। আগামীকালের নতুন চ্যালেঞ্জের জন্য নিজেকে মানসিকভাবে প্রস্তুত করুন।</div>
+      </div>
+
+      <!-- Complete / Incomplete Checkbox Box -->
+      <label class="completion-container" for="day7Complete">
+        <input type="checkbox" id="day7Complete" onchange="toggleCompletionState()">
+        <div>
+          <span class="completion-label">Mark as Complete ✔</span>
+          <div id="statusBadge" class="status-badge">Status: Incomplete ✖</div>
+        </div>
+      </label>
+
+      <button class="custom-popup-btn" onclick="closePopup()">Save & Close</button>
+    </div>
+  </div>
+
+  <!-- 3. JavaScript Logic for LocalStorage -->
+  <script>
+    // Unique key for Day 7
+    const STORAGE_KEY = 'ielts_day_7_complete';
+
+    function openPopup() {
+      document.getElementById('sitePopup').style.display = 'flex';
+      loadCompletionState();
+    }
+
+    function closePopup() {
+      document.getElementById('sitePopup').style.display = 'none';
+    }
+
+    function toggleCompletionState() {
+      const checkbox = document.getElementById('day7Complete');
+      const isChecked = checkbox.checked;
+
+      localStorage.setItem(STORAGE_KEY, isChecked);
+      updateBadgeUI(isChecked);
+    }
+
+    function loadCompletionState() {
+      const savedState = localStorage.getItem(STORAGE_KEY) === 'true';
+      const checkbox = document.getElementById('day7Complete');
+
+      checkbox.checked = savedState;
+      updateBadgeUI(savedState);
+    }
+
+    function updateBadgeUI(isCompleted) {
+      const badge = document.getElementById('statusBadge');
+      if (isCompleted) {
+        badge.textContent = 'Status: Completed ✔';
+        badge.classList.add('completed');
+      } else {
+        badge.textContent = 'Status: Incomplete ✖';
+        badge.classList.remove('completed');
+      }
+    }
+
+    // Auto-check on page load
+    window.addEventListener('DOMContentLoaded', loadCompletionState);
+  </script>
+</body>
+</html>
