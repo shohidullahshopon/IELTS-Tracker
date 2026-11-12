@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 16: Phase 2 Begins - Reading & Listening Dive</title>
+  <style>
+    /* Global Reset & Box Sizing */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: transparent;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Modal Overlay Background */
+    .custom-popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Modal Content Box */
+    .custom-popup-box {
+      background: #ffffff;
+      padding: 24px;
+      width: 90%;
+      max-width: 520px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      text-align: left;
+      color: #333333;
+    }
+
+    /* Close Button */
+    .custom-popup-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #888888;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .custom-popup-close:hover {
+      color: #000000;
+    }
+
+    /* Heading & Content Styling */
+    .custom-popup-box h3 {
+      margin-top: 0;
+      color: #1a73e8;
+      font-size: 20px;
+      padding-right: 25px;
+      line-height: 1.4;
+    }
+
+    .intro-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #444444;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+
+    .task-list {
+      background-color: #f8f9fa;
+      border-left: 4px solid #1a73e8;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+    }
+
+    .task-item {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      color: #202124;
+    }
+
+    .task-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .task-item strong {
+      color: #1a73e8;
+    }
+
+    /* Checkbox Container */
+    .completion-container {
+      display: flex;
+      align-items: center;
+      background-color: #f1f3f4;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #dadce0;
+      margin-bottom: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Checkbox Styling */
+    .completion-container input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: #1a73e8;
+      cursor: pointer;
+      margin-right: 12px;
+    }
+
+    .completion-label {
+      font-size: 15px;
+      font-weight: bold;
+      color: #3c4043;
+      cursor: pointer;
+    }
+
+    .status-badge {
+      margin-top: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #d93025; /* Red for incomplete */
+    }
+
+    .status-badge.completed {
+      color: #188038; /* Green for completed */
+    }
+
+    /* Trigger Button Styling */
+    .open-popup-btn {
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
+    .open-popup-btn:hover {
+      background-color: #1557b0;
+    }
+
+    /* Action Button */
+    .custom-popup-btn {
+      display: block;
+      background-color: #1a73e8;
+      color: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .custom-popup-btn:hover {
+      background-color: #1557b0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Trigger Button -->
+  <button class="open-popup-btn" onclick="openPopup()">Day 16: View Tasks 🌊</button>
+
+  <!-- 2. Modal Overlay -->
+  <div id="sitePopup" class="custom-popup-overlay">
+    <div class="custom-popup-box">
+      <button class="custom-popup-close" onclick="closePopup()">&times;</button>
+      
+      <h3>Day 16: Phase 2 Begins - Reading & Listening Dive 🌊</h3>
+      
+      <p class="intro-text">
+        আজ থেকে আমরা সরাসরি IELTS ফরম্যাটের কঠিন প্রশ্নগুলোর মুখোমুখি হবো। কাজের চাপ বেশি থাকবে, ফোকাস ধরে রাখুন।
+      </p>
+
+      <div class="task-list">
+        <div class="task-item"><strong>Task 1:</strong> কেমব্রিজ বা যেকোনো সোর্স থেকে Reading Passage 1 এর একটি সম্পূর্ণ প্যাসেজ নিন। কোনো টাইমার ছাড়া শুধু Fill in the blanks (শূন্যস্থান) এবং True False Not Given প্রশ্নগুলো সলভ করুন।</div>
+        <div class="task-item"><strong>Task 2:</strong> ইউটিউব বা ওয়েবসাইট থেকে IELTS Listening Section 1 এবং Section 2 এর একটি টেস্ট দিন। এবং শেষে মিলিয়ে দেখুন কয়টা হয়েছে।</div>
+        <div class="task-item"><strong>Task 3:</strong> (Transcription) যে লিসেনিং টেস্টটি দিলেন, তার যেকোনো ২ মিনিটের অডিও প্লে করুন। যা শুনছেন তা হুবহু পজ করে করে খাতায় লিখুন। এতে কান শার্প হবে।</div>
+        <div class="task-item"><strong>Task 4:</strong> Speaking Part 1 এর কমন ৩টি টপিক (Hometown, Work/Study, Hobbies) নিয়ে নিজে নিজে মোট ৫ মিনিট ইংরেজিতে কথা বলুন।</div>
+        <div class="task-item"><strong>Task 5:</strong> 'Travel and Transport' সম্পর্কিত ২৫টি নতুন Academic শব্দ খাতায় অর্থসহ লিখুন এবং মুখস্থ করুন।</div>
+        <div class="task-item"><strong>Task 6:</strong> ওই ২৫টি শব্দ থেকে কঠিন ৫টি শব্দ বেছে নিয়ে ৫টি বড় বাক্য (Complex Sentence) তৈরি করুন।</div>
+      </div>
+
+      <!-- Complete / Incomplete Checkbox Box -->
+      <label class="completion-container" for="day16Complete">
+        <input type="checkbox" id="day16Complete" onchange="toggleCompletionState()">
+        <div>
+          <span class="completion-label">Mark as Complete ✔</span>
+          <div id="statusBadge" class="status-badge">Status: Incomplete ✖</div>
+        </div>
+      </label>
+
+      <button class="custom-popup-btn" onclick="closePopup()">Save & Close</button>
+    </div>
+  </div>
+
+  <!-- 3. JavaScript Logic for LocalStorage -->
+  <script>
+    // Unique key for Day 16
+    const STORAGE_KEY = 'ielts_day_16_complete';
+
+    function openPopup() {
+      document.getElementById('sitePopup').style.display = 'flex';
+      loadCompletionState();
+    }
+
+    function closePopup() {
+      document.getElementById('sitePopup').style.display = 'none';
+    }
+
+    function toggleCompletionState() {
+      const checkbox = document.getElementById('day16Complete');
+      const isChecked = checkbox.checked;
+
+      localStorage.setItem(STORAGE_KEY, isChecked);
+      updateBadgeUI(isChecked);
+    }
+
+    function loadCompletionState() {
+      const savedState = localStorage.getItem(STORAGE_KEY) === 'true';
+      const checkbox = document.getElementById('day16Complete');
+
+      checkbox.checked = savedState;
+      updateBadgeUI(savedState);
+    }
+
+    function updateBadgeUI(isCompleted) {
+      const badge = document.getElementById('statusBadge');
+      if (isCompleted) {
+        badge.textContent = 'Status: Completed ✔';
+        badge.classList.add('completed');
+      } else {
+        badge.textContent = 'Status: Incomplete ✖';
+        badge.classList.remove('completed');
+      }
+    }
+
+    // Auto-check on page load
+    window.addEventListener('DOMContentLoaded', loadCompletionState);
+  </script>
+</body>
+</html>
